@@ -1,4 +1,4 @@
-mport psycopg2
+import psycopg2
 from config import config
 
 def init_db():
