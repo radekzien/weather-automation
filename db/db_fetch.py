@@ -16,6 +16,7 @@ def fetch_subscribers():
         for row in subscribers:
             print(row)
 
+        return subscribers
         cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
@@ -23,7 +24,6 @@ def fetch_subscribers():
         if conn is not None:
             conn.close()
             print("Database connection closed.")
-        #return subscribers
     
 if __name__ == '__main__':
     fetch_subscribers()
