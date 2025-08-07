@@ -27,5 +27,3 @@ def fetch_subscribers():
     
 if __name__ == '__main__':
     fetch_subscribers()
-import psycopg2
-from config import config
