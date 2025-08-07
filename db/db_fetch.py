@@ -1,7 +1,7 @@
 import psycopg2
 from config import config
 
-def init_db():
+def fetch_subscribers():
     conn = None
     try:
         params = config()
@@ -11,26 +11,19 @@ def init_db():
 
         cur = conn.cursor()
 
-        cur.execute("""
-        CREATE TABLE IF NOT EXISTS subscribers (
-            id SERIAL PRIMARY KEY,
-            email VARCHAR(255) NOT NULL UNIQUE,
-            postcode VARCHAR(20) NOT NULL,
-            city VARCHAR(100) NOT NULL
-        );
-        """)
-        print("Table 'subscribers' is ready.")
-
-        conn.commit()
+        cur.execute("SELECT * FROM subscribers;")
+        subscribers = cur.fetchall()
+        for row in subscribers:
+            print(row)
 
         cur.close()
-
     except (Exception, psycopg2.DatabaseError) as error:
-        print(errors)
+        print(error)
     finally:
         if conn is not None:
             conn.close()
             print("Database connection closed.")
-
+        #return subscribers
+    
 if __name__ == '__main__':
-    init_db()
+    fetch_subscribers()
