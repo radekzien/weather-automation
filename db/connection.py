@@ -4,7 +4,7 @@ from config import config
 def connect():
     conn = None
     try:
-        params = config()
+        params = config('database.ini', 'postgresql')
         print('Connecting to database')
         conn = psycopg2.connect(**params)
 
