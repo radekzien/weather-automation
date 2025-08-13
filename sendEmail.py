@@ -1,5 +1,6 @@
 import smtplib
 import base64
+import datetime #TEMPORARY FOR TESTING
 from email.mime.text import MIMEText
 from config import config
 
@@ -14,7 +15,7 @@ def sendEmail():
     smtp.ehlo()
     smtp.login(from_email, params['email_password'])
 
-    msg = MIMEText("You the goat")
+    msg = MIMEText("Test email from Weather Automation time: " + str(datetime.datetime.now()))
     msg['Subject'] = 'Weather Automation Test Email'
 
     smtp.sendmail(from_email, to_email, msg.as_string())
