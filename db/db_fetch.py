@@ -1,10 +1,12 @@
 import psycopg2
 from config import config
 
+
+
 def fetch_subscribers():
     conn = None
     try:
-        params = config('database.ini', 'postgresql')
+        params = config('db/database.ini', 'postgresql')
         print("Connecting to database...")
         conn = psycopg2.connect(**params)
         print("Connection successful!")
@@ -24,6 +26,18 @@ def fetch_subscribers():
         if conn is not None:
             conn.close()
             print("Database connection closed.")
+
+# def fetch_locations():
+#     conn = None
+#     try:
+#         print("Connecting to database...")
+#         conn = psycopg2.connect(**params)
+#         print("Connection successful!")
+
+#         cur = conn.cursor()
+
+#         cur.execute("")
+    
     
 if __name__ == '__main__':
     fetch_subscribers()
