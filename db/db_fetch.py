@@ -39,10 +39,13 @@ def fetch_locations():
         cur.execute("SELECT DISTINCT city FROM subscribers;")
         cities = cur.fetchall()
 
-        for row in cities:  # for testing
-            print(row)
+        cities = [city[0] for city in cities]
+
+        for city in cities: #for testing
+            print(city)
 
         return cities
+        cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:
