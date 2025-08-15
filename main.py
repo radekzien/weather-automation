@@ -20,6 +20,7 @@ def main():
         all_locations[city] = weather_data
 
 #-- Sending weather data to subscribers --
+    # Fetch subscribers from the database
     subscribers = fetch_subscribers()
     if not subscribers:
         print("No subscribers found in the database.")
@@ -27,6 +28,7 @@ def main():
     else:
         print(f"Subscribers fetched: {subscribers}")
 
+    # Send weather data to each subscriber
     for subscriber in subscribers:
         subscriberCity = subscriber[3]
         subscriberEmail = subscriber[1]
