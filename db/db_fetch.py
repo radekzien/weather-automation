@@ -14,9 +14,12 @@ def fetch_subscribers():
 
         cur.execute("SELECT * FROM subscribers;")
         subscribers = cur.fetchall()
-        
-        for row in subscribers: #for testing
-            print(row)
+    
+        if not subscribers:
+            print("No subscribers found in the database.")
+            return []
+        else:
+            print("Fetched subscribers successfully.")
 
         return subscribers
         cur.close()
@@ -40,9 +43,12 @@ def fetch_locations():
         cities = cur.fetchall()
 
         cities = [city[0] for city in cities]
-
-        for city in cities: #for testing
-            print(city)
+        
+        if not cities:
+            print("No locations found in the database.")
+            return []
+        else:
+            print("Fetched locations successfully.")
 
         return cities
         cur.close()
