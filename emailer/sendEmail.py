@@ -22,6 +22,9 @@ def sendEmail(theData=None, to_email=None, receiver_name=None):
 
     if theData is None:
         theData = "No data provided."
+        msg.set_content(theData)
+        msg['Subject'] = 'Issue with your weather update'
+        msg['From'] = from_email
     else:
         msg = format_email(receiver_name, theData)
         msg['Subject'] = 'Weather update for ' + datetime.datetime.now().strftime('%A %#d %B')
