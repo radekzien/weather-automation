@@ -7,7 +7,7 @@ def format_email(name, weather):
     city = weather['location']['city']
     country = weather['location']['country']
     current = weather['current']
-    hourly = weather['hourtly']
+    hourly = weather['hourly']
 
     # Current datetime
     now = datetime.now()

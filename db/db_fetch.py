@@ -39,10 +39,11 @@ def fetch_locations():
 
         cur = conn.cursor()
 
-        cur.execute("SELECT DISTINCT city FROM subscribers;")
+        cur.execute("SELECT DISTINCT latlon FROM subscribers;")
         cities = cur.fetchall()
 
         cities = [city[0] for city in cities]
+
         
         if not cities:
             print("No locations found in the database.")

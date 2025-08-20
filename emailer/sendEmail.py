@@ -15,6 +15,8 @@ def sendEmail(theData=None, to_email=None, receiver_name=None):
     smtp.ehlo()
     smtp.login(from_email, params['email_password'])
 
+    msg = MIMEText('')
+
     if receiver_name is None:
         receiver_name = "User"
 
@@ -22,8 +24,8 @@ def sendEmail(theData=None, to_email=None, receiver_name=None):
         theData = "No data provided."
     else:
         msg = format_email(receiver_name, theData)
-    msg['Subject'] = 'Weather update for ' + datetime.datetime.now().strftime('%A %#d %B')
-    msg['From'] = from_email
+        msg['Subject'] = 'Weather update for ' + datetime.datetime.now().strftime('%A %#d %B')
+        msg['From'] = from_email
 
     if to_email:
         smtp.sendmail(from_email, to_email, msg.as_string())
