@@ -21,7 +21,7 @@ def parseWeather(data):
             'min_temp_c': data['forecast']['forecastday'][0]['day']['mintemp_c'],
             'condition': data['forecast']['forecastday'][0]['day']['condition']['text'],
         },
-        "hourtly" : [
+        "hourly" : [
             {
                 'time': hour['time'],
                 'temp_c': hour['temp_c'],
@@ -34,12 +34,15 @@ def parseWeather(data):
     }
     return parsed_data
 
-def get_weather(city):
-    response = requests.get(f"{params['api_url']}/forecast.json?key={params['weather_api']}&q={city}&days=1")
+def get_weather(coords):
+    response = requests.get(f"{params['api_url']}/forecast.json?key={params['weather_api']}&q={coords}&days=1")
     if response.status_code == 200:
         data = response.json()
+        print(f"Weather data for {data['location']['name']} fetched successfully.")
         return parseWeather(data)
     else:
+        print(f"Failed to fetch weather data for {city}. Status code: {response.status_code}")
+        print("Response:", response.text)
         return
 
 if __name__ == "__main__":

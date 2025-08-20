@@ -16,7 +16,7 @@ def init_db():
             id SERIAL PRIMARY KEY,
             email VARCHAR(255) NOT NULL UNIQUE,
             name VARCHAR(20) NOT NULL,
-            city VARCHAR(100) NOT NULL
+            latlon VARCHAR(100) NOT NULL
         );
         """)
         print("Table 'subscribers' is ready.")
